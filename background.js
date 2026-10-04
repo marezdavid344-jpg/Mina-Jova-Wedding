@@ -216,3 +216,20 @@ if (guestBookForm) {
     });
 
 }
+
+const music = document.getElementById('bgMusic');
+
+function startMusic() {
+    music.play().catch(() => {});
+    ['click', 'touchstart', 'scroll'].forEach(e =>
+        document.removeEventListener(e, startMusic)
+    );
+}
+
+// يحاول يشتغل أول ما الصفحة تفتح
+music.play().catch(() => {});
+
+// لو المتصفح منعه، يشتغل مع أول لمسة أو سحب
+['click', 'touchstart', 'scroll'].forEach(e =>
+    document.addEventListener(e, startMusic, { once: true })
+);
