@@ -10,19 +10,20 @@
 }
 
 .hero-img {
-    width: min(88vw,500px);
-    height: 72vh;
+    width: 100%;
+    height: 180vh;
     position: relative;
     z-index: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: visible;
+    overflow: hidden;
 }
 .hero-img img{
-    width: 100%;
+    wwidth: 100%;
     height: 100%;
     object-fit: contain;
+    object-position: center;
     display: block;
     
 }
