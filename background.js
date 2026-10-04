@@ -220,15 +220,15 @@ if (guestBookForm) {
 const music = document.getElementById('bgMusic');
 
 function startMusic() {
-    music.play().then(() => {
-        ['click', 'touchend', 'pointerup'].forEach(e =>
-            document.removeEventListener(e, startMusic)
-        );
-    }).catch(() => {});
+    music.play()
+        .then(() => {
+            ['click', 'touchend', 'pointerup'].forEach(e => {
+                document.removeEventListener(e, startMusic);
+            });
+        })
+        .catch(() => {});
 }
 
-music.play().catch(() => {});
-
-['click', 'touchend', 'pointerup'].forEach(e =>
-    document.addEventListener(e, startMusic)
-);
+['click', 'touchend', 'pointerup'].forEach(e => {
+    document.addEventListener(e, startMusic);
+});
