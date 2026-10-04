@@ -849,7 +849,7 @@ body {
     stroke: var(--btn-text);
 }
 
-/* الجزء السفلي */
+
 .guestBook-footer {
     margin-top: 40px;
     display: flex;
