@@ -3,6 +3,8 @@ html,body{
     padding:0;
     width:100%;
     background:#f4eee3;
+    color-scheme:light;
+    -webkit-text-size-adjust:100%;
 }
 
 .hero-page {
