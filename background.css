@@ -19,16 +19,12 @@
     align-items: center;
     overflow: visible;
 }
-.hero-img image{
+.hero-img img{
     width: 100%;
     height: 100%;
     object-fit: contain;
     display: block;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 100vw;
-    min-height: 100vh;
+    
 }
 
 .hero-content{
