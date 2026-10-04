@@ -874,3 +874,104 @@ body {
     height: auto;
     opacity: 0.8;
 }
+
+
+/* استدعاء خطوط قريبة جداً من التصميم */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;500;600&display=swap');
+
+.last-page {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    color: #614d3b; /* اللون البني الداكن الأنيق للمحتوى */
+    font-family: 'Cormorant Garamond', serif;
+    background-color: #e8ded1; /* خلفية افتراضية في حال لم تظهر الصورة */
+    overflow: hidden;
+}
+
+/* خلفية الصفحة كاملة */
+.last-page > img[alt="last-page"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+/* رفع باقي العناصر لتكون فوق الصورة الخلفية */
+.last-page h1,
+.last-page p,
+.last-page .footer-heart,
+.last-page .lastletters,
+.last-page .bottom-branch {
+    position: relative;
+    z-index: 1;
+}
+
+/* عنوان Thank you بخط اليد */
+.last-page h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3.8rem;
+    font-weight: normal;
+    margin: 20px 0 10px 0;
+    color: #5c4939;
+}
+
+/* النص الفرعي الأول */
+.last-page > p {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+    text-transform: lowercase;
+}
+
+/* شكل القلب الصغير والفاصل */
+.last-page .footer-heart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 15px 0;
+}
+
+.last-page .footer-heart span {
+    font-size: 0.9rem;
+    color: #614d3b;
+    position: relative;
+}
+
+/* إضافة خطوط خفيفة على جانبي القلب */
+.last-page .footer-heart::before,
+.last-page .footer-heart::after {
+    content: "";
+    width: 30px;
+    height: 1px;
+    background-color: rgba(97, 77, 59, 0.3);
+    margin: 0 10px;
+}
+
+/* النص السفلي */
+.last-page .lastletters p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    letter-spacing: 0.8px;
+    margin-top: 15px;
+}
+
+/* أغصان الزينة المضافة أعلى وأسفل الصفحة */
+.last-page .bottom-branch img {
+    width: 140px;
+    height: auto;
+    margin-top: 20px;
+    opacity: 0.85;
+}
