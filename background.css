@@ -730,7 +730,7 @@ section:has(.church) {
     font-family: 'Great Vibes', cursive;
     font-size: 3.8rem;
     font-weight: normal;
-    margin: 8px 0 0 0;
+    margin: 25px 0 0 0;
     color: #5c4939;
 }
 
@@ -739,7 +739,7 @@ section:has(.church) {
     font-size: 1.25rem;
     line-height: 1.5;
     letter-spacing: 1px;
-    margin: 12px 0 0 0;
+    margin: 30px 0 0 0;
     text-transform: lowercase;
 }
 
@@ -749,7 +749,7 @@ section:has(.church) {
     align-items: center;
     justify-content: center;
     width: 100%;
-    margin: 15px 0 8px 0;
+    margin: 35px 0 8px 0;
 }
 
 /* القلب */
