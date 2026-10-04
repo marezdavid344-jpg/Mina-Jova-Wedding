@@ -695,7 +695,7 @@ section:has(.church) {
     text-align: center;
 
     /* اللي بيتحكم في نزول الكلام: الرقم الأول (فوق) */
-    padding: 32vh 20px 15px 20px;
+    padding: 60vh 20px 15px 20px;
 
     box-sizing: border-box;
     color: #614d3b;
