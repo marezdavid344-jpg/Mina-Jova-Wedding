@@ -1,12 +1,18 @@
-html,body{
-    margin:0;
-    padding:0;
-    width:100%;
-    background:#f4eee3;
-    color-scheme:light;
-    -webkit-text-size-adjust:100%;
+/* --- إعدادات الصفحة الأساسية --- */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background: #f4eee3;
+    color-scheme: light;
+    -webkit-text-size-adjust: 100%;
+    font-family: 'Playfair Display', Georgia, serif;
+    display: block; /* يضمن ترتيب الأقسام عمودياً */
 }
 
+/* ==========================================
+   1. Hero Page Section (الصفحة الأولى)
+   ========================================== */
 .hero-page {
     width: 100%;
     min-height: 100svh;
@@ -18,7 +24,7 @@ html,body{
     align-items: center;
     padding: 0;
     box-sizing: border-box;
-    touch-action:none;
+    touch-action: none;
 }
 
 .hero-img {
@@ -49,20 +55,20 @@ html,body{
     max-width: 500px;
 }
 
-.hero-content h1{
-    font-family: "Cormorant Garamond",serif;
-    font-size: clamp(26px,5vw,36px);
+.hero-content h1 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(26px, 5vw, 36px);
     font-weight: 400;
     color: #7a634d;
     margin: 0;
     text-transform: uppercase;
     letter-spacing: 4px;
     line-height: 1.2;
-  
 }
-.hero-content h1 span{
-    font-family: 'Great Vibes',cursive;
-    font-size: clamp(28px,6vw,42px);
+
+.hero-content h1 span {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(28px, 6vw, 42px);
     letter-spacing: 1px;
     font-style: italic;
     font-weight: 400;
@@ -71,8 +77,9 @@ html,body{
     margin-top: 10px;
     color: #7a634d;
 }
-.hero-content h1 .amp{
-    font-family: 'Great Vibes',cursive;
+
+.hero-content h1 .amp {
+    font-family: 'Great Vibes', cursive;
     font-size: 1.3em;
     color: #7a634d;
     text-transform: none;
@@ -81,6 +88,7 @@ html,body{
     display: inline-block;
     vertical-align: middle;
 }
+
 .icon {
     display: flex;
     justify-content: center;
@@ -94,7 +102,7 @@ html,body{
     mix-blend-mode: multiply;
 }
 
-.scroll-down{
+.scroll-down {
     position: absolute;
     z-index: 2;
     opacity: 0.9;
@@ -105,33 +113,23 @@ html,body{
     flex-direction: column;
     align-items: center;
     gap: 5px;
-    font-family: "Montserrat",sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 11px;
     white-space: nowrap;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: #f4e8d1;
 }
-.scroll-down .arrow{
+
+.scroll-down .arrow {
     display: block;
     font-size: 20px;
     line-height: 1;
 }
 
-.top-branch img{
-    width: 55px;
-    height: auto;
-    margin-bottom: 15px;
-    display: block;
-}
-.bottom-branch img{
-    width: 250px;
-    height: auto;
-    margin: 10px auto 25px;
-    display: block;
-}
-
-
+/* ==========================================
+   2. Date Page Section (صفحة التاريخ والتنازلي)
+   ========================================== */
 .date-page {
     width: 100%;
     min-height: 100svh;
@@ -144,22 +142,31 @@ html,body{
     color: #c4b5a5;
     box-sizing: border-box;
 }
-.date-content{
+
+.date-content {
     width: 100%;
     max-width: 450px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.save-date{
-    font-family: 'Great Vibes',cursive;
+
+.top-branch img {
+    width: 55px;
+    height: auto;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.save-date {
+    font-family: 'Great Vibes', cursive;
     font-size: 42px;
     letter-spacing: 1px;
     color: #6d543e;
     margin: 0 0 20px 0;
-    
 }
-.wedding-date{
+
+.wedding-date {
     display: inline-flex;
     flex-direction: column;
     justify-content: center;
@@ -171,40 +178,44 @@ html,body{
     margin: 5px 0 20px;
 }
 
-.month span{
-    font-family: "Montserrat",sans-serif;
+.month span {
+    font-family: "Montserrat", sans-serif;
     font-size: 13px;
     letter-spacing: 4px;
     color: #5c4632;
 }
-.day span{
-    font-family: "Bodoni Moda ",serif;
+
+.day span {
+    font-family: "Bodoni Moda", serif;
     font-size: 58px;
     line-height: 1;
     font-weight: 500;
     color: #5c4632;
 }
-.year span{
-    font-family: "Cormorant Garamond",serif;
+
+.year span {
+    font-family: "Cormorant Garamond", serif;
     font-size: 18px;
     letter-spacing: 3px;
     color: #5c4632;
 }
-.day-time{
-    font-family: "Montserrat",sans-serif;
+
+.day-time {
+    font-family: "Montserrat", sans-serif;
     font-size: 11px;
     letter-spacing: 3px;
     color: #6d543e;
-    margin:10px 0 20px ;
+    margin: 10px 0 20px;
     text-transform: uppercase;
 }
+
 .heart-line {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 65%;
     gap: 12px;
-    margin: 10px auto 25px ;
+    margin: 10px auto 25px;
 }
 
 .heart-line span {
@@ -235,6 +246,7 @@ html,body{
     gap: 16px;
     margin-bottom: 20px;
 }
+
 .countbox {
     display: flex;
     flex-direction: column;
@@ -250,26 +262,25 @@ html,body{
 }
 
 .countbox small {
-    font-family: "Cormorant Garamond",serif;
+    font-family: "Cormorant Garamond", serif;
     margin-top: 4px;
     font-size: 12px;
     letter-spacing: 0.5px;
-    text-transform: capitaliz;
+    text-transform: capitalize;
     color: #806b58;
 }
-.time-sep{
+
+.time-sep {
     color: #c4b5a5;
     font-weight: 300;
     font-size: 20px;
     line-height: 1;
 }
+
 .invitation-message {
     font-family: "Cormorant Garamond", serif;
-
     color: #5d4737;
-
     font-size: 20px;
-
     line-height: 1.6;
     font-style: italic;
 }
@@ -278,9 +289,132 @@ html,body{
     margin: 4px 0;
 }
 
-.footer-heart{
+.footer-heart {
     display: block;
     margin-top: 15px;
     font-size: 10px;
     color: #6d543e;
+}
+
+/* ==========================================
+   3. Church Section (قسم الكنيسة)
+   ========================================== */
+section:has(.church) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    background-color: #f4eee3;
+}
+
+.church {
+    background-color: #f5f0e8;
+    border: 1px solid #dcd3c5;
+    outline: 8px solid #f5f0e8;
+    box-shadow: 0 0 0 9px #dcd3c5;
+    
+    max-width: 380px;
+    width: 100%;
+    padding: 40px 20px;
+    text-align: center;
+    box-sizing: border-box;
+    color: #4a3b32;
+    margin: 0 auto;
+}
+
+.church h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 38px;
+    font-weight: normal;
+    margin: 0 0 10px 0;
+    color: #3b2d25;
+}
+
+.church .cross {
+    font-size: 18px;
+    color: #8c7355;
+    margin: 10px 0 20px;
+    line-height: 0.5;
+}
+
+.church img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 2px;
+    display: block;
+    margin: 0 auto 20px auto;
+}
+
+.church h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0 0 6px 0;
+    color: #3b2d25;
+}
+
+.church .address {
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #736357;
+    margin: 0 0 20px 0;
+}
+
+.ch-time {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 25px;
+    color: #4a3b32;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.clock-icon {
+    width: 16px;
+    height: 16px;
+    stroke: #4a3b32;
+}
+
+/* --- تنسيق زر الموقع المطابق للـ HTML لديك --- */
+.location {
+    margin-bottom: 25px;
+}
+
+.location a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: #5c4433; /* لون الزر البني */
+    color: #ffffff !important;  /* النص أبيض */
+    padding: 10px 24px;
+    border-radius: 50px;       /* تجعل الحواف بيضاوية دائرية */
+    text-decoration: none !important;
+    font-family: "Montserrat", sans-serif;
+    font-size: 13px;
+    transition: background-color 0.3s ease;
+}
+
+.location a:hover {
+    background-color: #423023;
+}
+
+/* تنسيق أيقونة الموقع داخل الزر (locationicon) */
+.locationicon {
+    width: 15px;
+    height: 15px;
+    fill: #ffffff;
+}
+
+.bottom-branch img {
+    width: 250px;
+    height: auto;
+    margin: 10px auto 25px;
+    display: block;
 }
