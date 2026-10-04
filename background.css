@@ -186,7 +186,7 @@ html, body {
 }
 
 .day span {
-    font-family: "Bodoni Moda", serif;
+    font-family: "barkshire swash", serif;
     font-size: 58px;
     line-height: 1;
     font-weight: 500;
@@ -296,9 +296,7 @@ html, body {
     color: #6d543e;
 }
 
-/* ==========================================
-   3. Church Section (قسم الكنيسة)
-   ========================================== */
+
 section:has(.church) {
     display: flex;
     justify-content: center;
@@ -338,6 +336,7 @@ section:has(.church) {
     margin: 10px 0 20px;
     line-height: 0.5;
 }
+
 
 .church img {
     width: 100%;
@@ -381,7 +380,7 @@ section:has(.church) {
     stroke: #4a3b32;
 }
 
-/* --- تنسيق زر الموقع المطابق للـ HTML لديك --- */
+
 .location {
     margin-bottom: 25px;
 }
@@ -391,10 +390,10 @@ section:has(.church) {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    background-color: #5c4433; /* لون الزر البني */
-    color: #ffffff !important;  /* النص أبيض */
+    background-color: #5c4433; 
+    color: #ffffff !important;  
     padding: 10px 24px;
-    border-radius: 50px;       /* تجعل الحواف بيضاوية دائرية */
+    border-radius: 50px;       
     text-decoration: none !important;
     font-family: "Montserrat", sans-serif;
     font-size: 13px;
@@ -405,7 +404,7 @@ section:has(.church) {
     background-color: #423023;
 }
 
-/* تنسيق أيقونة الموقع داخل الزر (locationicon) */
+
 .locationicon {
     width: 15px;
     height: 15px;
@@ -417,4 +416,111 @@ section:has(.church) {
     height: auto;
     margin: 10px auto 25px;
     display: block;
+}
+
+
+.gallery {
+    background-color: #f3eae1; 
+    max-width: 450px;
+    margin: 0 auto;
+    padding: 30px 20px 20px 20px;
+    text-align: center;
+    box-sizing: border-box;
+    position: relative;
+}
+
+
+.gallery .title {
+    font-family: 'Great Vibes', 'Dancing Script', cursive;
+    font-size: 2.4rem;
+    color: #5c4b38;
+    margin: 0 0 5px 0;
+    font-weight: normal;
+}
+
+
+.gallery .cross {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1px;
+    margin-bottom: 20px;
+    color: #5c4b38;
+    font-size: 0.9rem;
+}
+
+.gallery .cross .line {
+    height: 1px;
+    width: 60px;
+    background-color: #c4b5a5;
+    display: inline-block;
+}
+.gallery .cross .icon{
+   font-size: 1.1rem;
+   line-height: 1;
+}
+
+
+.gallery .img {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+
+.gallery .img img {
+    width: 100%;
+    height: 180px; 
+    object-fit: cover; 
+    display: block;
+    border-radius: 2px;
+}
+
+
+.gallery .img img.full-width {
+    grid-column: span 2;
+    height: 160px; 
+}
+
+
+.gallery .img img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    object-position: top; 
+    display: block;
+    border-radius: 2px;
+}
+.gallery .img img:first-child{
+    object-position: bottom !important;
+}
+
+.gallery .footeer-content {
+    position: relative;
+    padding-top: 10px;
+    padding-bottom: 40px; 
+}
+
+.gallery .heart-icon {
+    font-size: 0.8rem;
+    color: #5c4b38;
+    margin-bottom: 5px;
+}
+
+.gallery .gcontent {
+    font-family: 'Great Vibes', 'Dancing Script', cursive;
+    font-size: 1.8rem;
+    color: #5c4b38;
+    margin: 0;
+}
+
+
+.gallery .side-branches {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    pointer-events: none; 
 }
