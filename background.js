@@ -36,11 +36,35 @@ updateCountdown();
 setInterval(updateCountdown, 1000);
 
 
-// --- 2. Swipe Up Hero ---
+// --- 2. Swipe Up Hero + Music ---
 
 const hero = document.querySelector(".hero-page");
 const datePage = document.querySelector(".date-page");
 const scrollTrigger = document.getElementById("scrollTrigger");
+
+
+// --- Music ---
+
+const music = document.getElementById("bgMusic");
+
+function startMusic() {
+
+    if (music && music.paused) {
+
+        music.play().catch(error => {
+            console.log("Music blocked:", error);
+        });
+
+    }
+
+}
+
+
+// محاولة تشغيل الموسيقى تلقائيًا
+if (music) {
+    music.play().catch(() => {});
+}
+
 
 let startY = 0;
 let currentY = 0;
@@ -48,9 +72,13 @@ let dragging = false;
 
 
 // الضغط على "A New Chapter Begins"
+
 if (scrollTrigger && datePage) {
 
     scrollTrigger.addEventListener("click", () => {
+
+        // تشغيل الموسيقى مع أول تفاعل
+        startMusic();
 
         window.scrollTo({
             top: datePage.offsetTop,
@@ -63,9 +91,13 @@ if (scrollTrigger && datePage) {
 
 
 // بداية السحب
+
 if (hero && datePage) {
 
     hero.addEventListener("touchstart", (e) => {
+
+        // أول لمسة على الـHero تشغل الموسيقى
+        startMusic();
 
         startY = e.touches[0].clientY;
         currentY = startY;
@@ -77,6 +109,7 @@ if (hero && datePage) {
 
 
     // أثناء السحب
+
     hero.addEventListener("touchmove", (e) => {
 
         if (!dragging) return;
@@ -87,12 +120,16 @@ if (hero && datePage) {
 
         let distance = currentY - startY;
 
+
         // ممنوع السحب لتحت
+
         if (distance > 0) {
             distance = 0;
         }
 
-        // الـ Hero يتحرك مع الصباع مباشرة
+
+        // الـHero يتحرك مع الصباع مباشرة
+
         hero.style.transform =
             `translate3d(0, ${distance}px, 0)`;
 
@@ -100,6 +137,7 @@ if (hero && datePage) {
 
 
     // نهاية السحب
+
     hero.addEventListener("touchend", () => {
 
         if (!dragging) return;
@@ -110,6 +148,7 @@ if (hero && datePage) {
 
 
         // سحبة قوية → الصفحة التالية
+
         if (distance <= -100) {
 
             hero.style.transition =
@@ -135,6 +174,7 @@ if (hero && datePage) {
 
 
         // سحبة ضعيفة → يرجع
+
         else {
 
             hero.style.transition =
@@ -170,18 +210,24 @@ if (guestBookForm) {
         const name = guestName.value.trim();
         const message = guestMessage.value.trim();
 
+
         if (!name || !message) {
             return;
         }
 
+
         guestBookStatus.textContent = "Sending...";
 
+
         fetch(scriptURL, {
+
             method: "POST",
+
             body: JSON.stringify({
                 name: name,
                 message: message
             })
+
         })
 
         .then(response => response.json())
@@ -195,7 +241,9 @@ if (guestBookForm) {
 
                 guestBookForm.reset();
 
-            } else {
+            }
+
+            else {
 
                 guestBookStatus.textContent =
                     "Something went wrong. Please try again.";
@@ -216,18 +264,3 @@ if (guestBookForm) {
     });
 
 }
-
-const music = document.getElementById("bgMusic");
-const heroImage = document.querySelector(".hero-img");
-
-// محاولة تشغيل الموسيقى تلقائيًا
-music.play().catch(() => {
-    // Chrome منع الـautoplay، هنستنى ضغطة على أول صورة
-});
-
-// لو الـautoplay اترفض، أول ضغطة على الصورة تشغل الموسيقى
-heroImage.addEventListener("click", () => {
-    if (music.paused) {
-        music.play().catch(() => {});
-    }
-});
