@@ -877,8 +877,9 @@ body {
 
 
 /* استدعاء خطوط قريبة جداً من التصميم */
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;500;600&display=swap');
-
+/* ==========================================
+   5. Last Page Section (الصفحة الأخيرة)
+   ========================================== */
 .last-page {
     position: relative;
     width: 100%;
@@ -886,13 +887,14 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    /* محاذاة المحتوى في الجزء السفلي مع مساحة متناسقة */
+    justify-content: flex-end; 
     text-align: center;
-    padding: 40px 20px;
+    padding: 0 20px 80px 20px; /* زيادة الهامش السفلي لرفعها قليلاً عن القاع */
     box-sizing: border-box;
-    color: #614d3b; /* اللون البني الداكن الأنيق للمحتوى */
+    color: #614d3b;
     font-family: 'Cormorant Garamond', serif;
-    background-color: #e8ded1; /* خلفية افتراضية في حال لم تظهر الصورة */
+    background-color: #e8ded1;
     overflow: hidden;
 }
 
@@ -917,21 +919,21 @@ body {
     z-index: 1;
 }
 
-/* عنوان Thank you بخط اليد */
+/* عنوان Thank you */
 .last-page h1 {
     font-family: 'Great Vibes', cursive;
     font-size: 3.8rem;
     font-weight: normal;
-    margin: 20px 0 10px 0;
+    margin: 0 0 8px 0;
     color: #5c4939;
 }
 
 /* النص الفرعي الأول */
 .last-page > p {
     font-size: 1.25rem;
-    line-height: 1.6;
+    line-height: 1.5;
     letter-spacing: 1px;
-    margin-bottom: 25px;
+    margin: 0 0 20px 0;
     text-transform: lowercase;
 }
 
@@ -941,7 +943,7 @@ body {
     align-items: center;
     justify-content: center;
     width: 100%;
-    margin: 15px 0;
+    margin: 10px 0 20px 0;
 }
 
 .last-page .footer-heart span {
@@ -950,28 +952,28 @@ body {
     position: relative;
 }
 
-/* إضافة خطوط خفيفة على جانبي القلب */
+/* إضافة الخطوط الخفيفة على جانبي القلب */
 .last-page .footer-heart::before,
 .last-page .footer-heart::after {
     content: "";
-    width: 30px;
+    width: 35px;
     height: 1px;
-    background-color: rgba(97, 77, 59, 0.3);
+    background-color: rgba(97, 77, 59, 0.35);
     margin: 0 10px;
 }
 
 /* النص السفلي */
 .last-page .lastletters p {
-    font-size: 1.15rem;
-    line-height: 1.8;
+    font-size: 1.2rem;
+    line-height: 1.6;
     letter-spacing: 0.8px;
-    margin-top: 15px;
+    margin: 0;
 }
 
-/* أغصان الزينة المضافة أعلى وأسفل الصفحة */
+/* غصن الزينة السفلي */
 .last-page .bottom-branch img {
-    width: 140px;
+    width: 130px;
     height: auto;
-    margin-top: 20px;
+    margin-top: 25px;
     opacity: 0.85;
 }
