@@ -39,37 +39,24 @@ if (scrollTrigger) {
 }
 
 let startY = 0;
-let startX = 0;
 
-if (hero) {
+if (hero && datePage) {
 
-    hero.addEventListener("touchstart", function(e) {
-
+    hero.addEventListener("touchstart", function (e) {
         startY = e.touches[0].clientY;
-        startX = e.touches[0].clientX;
-        isSwiping = true;
-
     }, { passive: true });
 
-
-    hero.addEventListener("touchend", function(e)  {
-
+    hero.addEventListener("touchend", function (e) {
 
         const endY = e.changedTouches[0].clientY;
-        const endX = e.changedTouches[0].clientX;
-        const differenceY = startY - endY;
-        const differenceX = Math.abs(startX - endX);
+        const difference = startY - endY;
 
-        if(differenceY >50 && differenceY >differenceX)
-        {
-            window.scrollTo({
-                top:window.innerHeight,
-                behavior:"smooth"
+        if (difference > 50) {
+            datePage.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
             });
         }
 
-        
-
     }, { passive: true });
-
 }
