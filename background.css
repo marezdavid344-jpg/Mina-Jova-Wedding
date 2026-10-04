@@ -880,88 +880,23 @@ body {
 /* ==========================================
    5. Last Page Section (الصفحة الأخيرة)
    ========================================== */
-.last-page {
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    /* كل المحتوى ناحية تحت */
-    justify-content: flex-start;
-
-    text-align: center;
-
-    /* نقل المحتوى لتحت */
-    padding: 62px 20px 15px 20px;
-
-    box-sizing: border-box;
-    color: #614d3b;
-    font-family: 'Cormorant Garamond', serif;
-    background-color: #e8ded1;
-    overflow: hidden;
-}
-
-
-/* خلفية الصفحة كاملة */
-.last-page > img[alt="last-page"] {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0;
-}
-
-
-/* العناصر فوق الخلفية */
-.last-page h1,
-.last-page p,
-.last-page .footer-heart,
-.last-page .lastletters,
-.last-page .bottom-branch {
-    position: relative;
-    z-index: 1;
-}
-
-
-/* عنوان Thank you */
-.last-page h1 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 3.8rem;
-    font-weight: normal;
-
-    margin: 8px 0 0 0;
-
-    color: #5c4939;
-}
-
-
 /* النص الرئيسي */
 .last-page > p {
     font-size: 1.25rem;
     line-height: 1.5;
     letter-spacing: 1px;
-
     margin: 12px 0 0 0;
-
     text-transform: lowercase;
 }
-
 
 /* القلب والخط */
 .last-page .footer-heart {
     display: flex;
     align-items: center;
     justify-content: center;
-
     width: 100%;
-
     margin: 15px 0 8px 0;
 }
-
 
 /* القلب */
 .last-page .footer-heart span {
@@ -970,38 +905,29 @@ body {
     position: relative;
 }
 
-
 /* الخطوط على جانبي القلب */
 .last-page .footer-heart::before,
 .last-page .footer-heart::after {
     content: "";
-
     width: 35px;
     height: 1px;
-
     background-color: rgba(97, 77, 59, 0.35);
-
     margin: 10px 0px;
 }
-
 
 /* النص السفلي */
 .last-page .lastletters p {
     font-size: 1.2rem;
     line-height: 1.6;
     letter-spacing: 0.8px;
-
     margin: 0;
 }
-
 
 /* غصن الزينة */
 .last-page .bottom-branch img {
     width: 100px;
     height: auto;
-
     margin-top: 5px;
-    margin-bottom: 0px;
-
+    margin-bottom: 0;
     opacity: 0.85;
 }
