@@ -27,78 +27,116 @@ function updateCountdown() {
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
+// --- 2. Swipe Up Hero ---
+
+const hero = document.querySelector(".hero-page");
+const datePage = document.querySelector(".date-page");
+const scrollTrigger = document.getElementById("scrollTrigger");
+
 let startY = 0;
 let currentY = 0;
 let dragging = false;
 
-hero.addEventListener("touchstart", (e) => {
-    startY = e.touches[0].clientY;
-    currentY = startY;
-    dragging = true;
 
-    hero.style.transition = "none";
-}, { passive: true });
-
-
-hero.addEventListener("touchmove", (e) => {
-    if (!dragging) return;
-
-    e.preventDefault();
-
-    currentY = e.touches[0].clientY;
-
-    let distance = currentY - startY;
-
-    // نسمح بالسحب لفوق فقط
-    if (distance > 0) {
-        distance = 0;
-    }
-
-    // خلي الصفحة تتحرك فعليًا مع صباعك
-    hero.style.transform = `translate3d(0, ${distance}px, 0)`;
-
-}, { passive: false });
+// الضغط على "A New Chapter Begins"
+if (scrollTrigger && datePage) {
+    scrollTrigger.addEventListener("click", () => {
+        window.scrollTo({
+            top: datePage.offsetTop,
+            behavior: "smooth"
+        });
+    });
+}
 
 
-hero.addEventListener("touchend", () => {
+// بداية السحب
+if (hero && datePage) {
 
-    if (!dragging) return;
+    hero.addEventListener("touchstart", (e) => {
 
-    dragging = false;
+        startY = e.touches[0].clientY;
+        currentY = startY;
+        dragging = true;
 
-    const distance = currentY - startY;
+        hero.style.transition = "none";
 
-    // سحبة قوية
-    if (distance < -100) {
+    }, { passive: true });
 
-        hero.style.transition =
-            "transform 0.45s cubic-bezier(.22,1,.36,1)";
 
+    // أثناء السحب
+    hero.addEventListener("touchmove", (e) => {
+
+        if (!dragging) return;
+
+        e.preventDefault();
+
+        currentY = e.touches[0].clientY;
+
+        let distance = currentY - startY;
+
+        // ممنوع السحب لتحت
+        if (distance > 0) {
+            distance = 0;
+        }
+
+        // الـ Hero يتحرك مع الصباع مباشرة
         hero.style.transform =
-            "translate3d(0, -100vh, 0)";
+            `translate3d(0, ${distance}px, 0)`;
 
-        setTimeout(() => {
+    }, { passive: false });
 
-            window.scrollTo({
-                top: datePage.offsetTop,
-                behavior: "instant"
-            });
 
-            hero.style.transition = "none";
-            hero.style.transform = "";
+    // نهاية السحب
+    hero.addEventListener("touchend", () => {
 
-        }, 450);
+        if (!dragging) return;
 
-    } 
-    
-    // سحبة ضعيفة → يرجع
-    else {
+        dragging = false;
 
-        hero.style.transition =
-            "transform 0.3s ease";
+        const distance = currentY - startY;
 
-        hero.style.transform =
-            "translate3d(0, 0, 0)";
-    }
 
-});
+        // =========================
+        // سحبة قوية → الصفحة التالية
+        // =========================
+
+        if (distance <= -100) {
+
+            hero.style.transition =
+                "transform 0.45s cubic-bezier(0.22, 1, 0.36, 1)";
+
+            hero.style.transform =
+                "translate3d(0, -100vh, 0)";
+
+
+            setTimeout(() => {
+
+                window.scrollTo(
+                    0,
+                    datePage.offsetTop
+                );
+
+                hero.style.transition = "none";
+                hero.style.transform = "";
+
+            }, 450);
+
+        }
+
+
+        // =========================
+        // سحبة ضعيفة → يرجع
+        // =========================
+
+        else {
+
+            hero.style.transition =
+                "transform 0.35s cubic-bezier(0.22, 1, 0.36, 1)";
+
+            hero.style.transform =
+                "translate3d(0, 0, 0)";
+        }
+
+    });
+
+}
