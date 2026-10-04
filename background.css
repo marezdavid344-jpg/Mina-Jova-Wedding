@@ -889,12 +889,12 @@ body {
     align-items: center;
 
     /* كل المحتوى ناحية تحت */
-    justify-content: flex-end;
+    justify-content: flex-start;
 
     text-align: center;
 
     /* نقل المحتوى لتحت */
-    padding: 80px 20px 15px 20px;
+    padding: 62px 20px 15px 20px;
 
     box-sizing: border-box;
     color: #614d3b;
@@ -981,7 +981,7 @@ body {
 
     background-color: rgba(97, 77, 59, 0.35);
 
-    margin: 0 10px;
+    margin: 10px 0px;
 }
 
 
@@ -997,11 +997,11 @@ body {
 
 /* غصن الزينة */
 .last-page .bottom-branch img {
-    width: 130px;
+    width: 100px;
     height: auto;
 
     margin-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 0px;
 
     opacity: 0.85;
 }
