@@ -29,77 +29,78 @@ setInterval(updateCountdown, 1000);
 
 let startY = 0;
 let currentY = 0;
-let isDragging = false;
+let dragging = false;
 
 if (hero && datePage) {
 
     hero.addEventListener("touchstart", function (e) {
-
         startY = e.touches[0].clientY;
         currentY = startY;
-        isDragging = true;
+        dragging = true;
 
         hero.style.transition = "none";
-
     }, { passive: true });
 
 
     hero.addEventListener("touchmove", function (e) {
-
-        if (!isDragging) return;
+        if (!dragging) return;
 
         currentY = e.touches[0].clientY;
 
-        let distance = currentY - startY;
+        let move = currentY - startY;
 
-        // ممنوع تسحب لتحت
-        if (distance > 0) {
-            distance = 0;
+        // السحب لفوق بس
+        if (move < 0) {
+
+            // حركة خفيفة وطبيعية مع الصباع
+            hero.style.transform =
+                `translate3d(0, ${move}px, 0)`;
         }
-
-        // حركة الـHero مع الإصبع
-        hero.style.transform = `translateY(${distance}px)`;
 
     }, { passive: true });
 
 
     hero.addEventListener("touchend", function () {
 
-        if (!isDragging) return;
+        if (!dragging) return;
 
-        isDragging = false;
+        dragging = false;
 
-        const distance = currentY - startY;
+        let distance = currentY - startY;
 
         // لو السحبة قوية
-        if (distance < -120) {
+        if (distance < -100) {
 
-            hero.style.transition = "transform 0.5s ease";
+            hero.style.transition =
+                "transform 0.45s cubic-bezier(0.22, 1, 0.36, 1)";
 
-            // يكمل السحبة لفوق
-            hero.style.transform = "translateY(-100vh)";
+            hero.style.transform =
+                "translate3d(0, -100%, 0)";
 
             setTimeout(() => {
 
-                datePage.scrollIntoView({
-                    behavior: "instant",
-                    block: "start"
+                window.scrollTo({
+                    top: datePage.offsetTop,
+                    behavior: "instant"
                 });
 
+                hero.style.transition = "none";
                 hero.style.transform = "";
 
-            }, 500);
+            }, 450);
 
         } 
         
-        // لو السحبة ضعيفة
+        // لو السحبة ضعيفة يرجع
         else {
 
-            hero.style.transition = "transform 0.35s ease";
+            hero.style.transition =
+                "transform 0.35s cubic-bezier(0.22, 1, 0.36, 1)";
 
-            hero.style.transform = "translateY(0)";
-
+            hero.style.transform =
+                "translate3d(0, 0, 0)";
         }
 
     }, { passive: true });
+
 }
