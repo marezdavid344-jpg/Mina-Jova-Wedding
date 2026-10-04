@@ -218,17 +218,14 @@ if (guestBookForm) {
 }
 
 const music = document.getElementById("bgMusic");
+const musicBtn = document.getElementById("musicBtn");
 
-function startMusic() {
-    music.volume = 1;
-    music.play()
-        .then(() => {
-            console.log("Music started");
-        })
-        .catch((error) => {
-            console.log("Music blocked:", error);
-        });
-}
-
-document.addEventListener("click", startMusic, { once: true });
-document.addEventListener("touchstart", startMusic, { once: true });
+musicBtn.addEventListener("click", () => {
+    if (music.paused) {
+        music.play();
+        musicBtn.textContent = "♫";
+    } else {
+        music.pause();
+        musicBtn.textContent = "♪";
+    }
+});
