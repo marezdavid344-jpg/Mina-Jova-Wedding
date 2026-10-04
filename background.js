@@ -52,15 +52,13 @@ if (hero && datePage) {
 
         let distance = currentY - startY;
 
-        // نمنع السحب لتحت
+        // ممنوع تسحب لتحت
         if (distance > 0) {
             distance = 0;
         }
 
-        // نخلي الحركة طبيعية ومش عنيفة
-        const move = distance * 0.8;
-
-        hero.style.transform = `translateY(${move}px)`;
+        // حركة الـHero مع الإصبع
+        hero.style.transform = `translateY(${distance}px)`;
 
     }, { passive: true });
 
@@ -73,27 +71,32 @@ if (hero && datePage) {
 
         const distance = currentY - startY;
 
-        hero.style.transition = "transform 0.45s ease";
+        // لو السحبة قوية
+        if (distance < -120) {
 
-        // لو سحب لفوق مسافة كويسة
-        if (distance < -80) {
+            hero.style.transition = "transform 0.5s ease";
 
+            // يكمل السحبة لفوق
             hero.style.transform = "translateY(-100vh)";
 
             setTimeout(() => {
 
                 datePage.scrollIntoView({
-                    behavior: "smooth",
+                    behavior: "instant",
                     block: "start"
                 });
 
                 hero.style.transform = "";
 
-            }, 450);
+            }, 500);
 
-        } else {
+        } 
+        
+        // لو السحبة ضعيفة
+        else {
 
-            // لو سحبة صغيرة يرجع مكانه
+            hero.style.transition = "transform 0.35s ease";
+
             hero.style.transform = "translateY(0)";
 
         }
