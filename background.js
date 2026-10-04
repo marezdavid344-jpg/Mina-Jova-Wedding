@@ -39,17 +39,37 @@ if (scrollTrigger) {
 }
 
 let startY = 0;
+let isSwiping = false;
 
 if (hero && datePage) {
+
     hero.addEventListener("touchstart", (e) => {
+
         startY = e.touches[0].clientY;
+        isSwiping = true;
+
     }, { passive: true });
 
+
     hero.addEventListener("touchend", (e) => {
-        let endY = e.changedTouches[0].clientY;
-        
-        if (startY - endY > 50) {
-            datePage.scrollIntoView({ behavior: "smooth" });
+
+        if (!isSwiping) return;
+
+        const endY = e.changedTouches[0].clientY;
+        const distance = startY - endY;
+
+        isSwiping = false;
+
+        // لو سحب لفوق أكتر من 60px
+        if (distance > 60) {
+
+            datePage.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
         }
+
     }, { passive: true });
+
 }
