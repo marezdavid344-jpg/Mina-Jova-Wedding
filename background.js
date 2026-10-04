@@ -39,24 +39,50 @@ if (scrollTrigger) {
 }
 
 let startY = 0;
+let isDragging = false;
 
 if (hero && datePage) {
 
     hero.addEventListener("touchstart", function (e) {
         startY = e.touches[0].clientY;
+        isDragging = true;
     }, { passive: true });
 
+
+    hero.addEventListener("touchmove", function (e) {
+
+        if (!isDragging) return;
+
+        const currentY = e.touches[0].clientY;
+        const difference = startY - currentY;
+
+        // امنع الـ browser من الـ scroll العادي
+        if (difference > 10) {
+            e.preventDefault();
+        }
+
+    }, { passive: false });
+
+
     hero.addEventListener("touchend", function (e) {
+
+        if (!isDragging) return;
 
         const endY = e.changedTouches[0].clientY;
         const difference = startY - endY;
 
+        isDragging = false;
+
+        // Swipe واضح لفوق
         if (difference > 50) {
+
             datePage.scrollIntoView({
                 behavior: "smooth",
                 block: "start"
             });
+
         }
 
     }, { passive: true });
+
 }
