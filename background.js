@@ -42,33 +42,15 @@ const hero = document.querySelector(".hero-page");
 const datePage = document.querySelector(".date-page");
 const scrollTrigger = document.getElementById("scrollTrigger");
 
-
-// --- Music ---
-
-const music = document.getElementById("bgMusic");
-
-function startMusic() {
-    if (!music) return;
-
-    music.play().catch(() => {
-        console.log("Browser blocked music");
-    });
-}
-
-
-// محاولة تشغيل الموسيقى تلقائيًا
-if (music) {
-    music.play().catch(() => {});
-}
+let startY = 0;
+let currentY = 0;
+let dragging = false;
 
 
 // الضغط على "A New Chapter Begins"
-
 if (scrollTrigger && datePage) {
 
     scrollTrigger.addEventListener("click", () => {
-
-        startMusic();
 
         window.scrollTo({
             top: datePage.offsetTop,
@@ -80,21 +62,10 @@ if (scrollTrigger && datePage) {
 }
 
 
-// السحب من الـHero
-
-let startY = 0;
-let currentY = 0;
-let dragging = false;
-
-
+// بداية السحب
 if (hero && datePage) {
 
-    // بداية السحب / أول لمسة
-
     hero.addEventListener("touchstart", (e) => {
-
-        // محاولة تشغيل الموسيقى من نفس اللمسة
-        startMusic();
 
         startY = e.touches[0].clientY;
         currentY = startY;
@@ -106,7 +77,6 @@ if (hero && datePage) {
 
 
     // أثناء السحب
-
     hero.addEventListener("touchmove", (e) => {
 
         if (!dragging) return;
@@ -118,13 +88,11 @@ if (hero && datePage) {
         let distance = currentY - startY;
 
         // ممنوع السحب لتحت
-
         if (distance > 0) {
             distance = 0;
         }
 
-        // الـHero يتحرك مع الصباع مباشرة
-
+        // الـ Hero يتحرك مع الصباع مباشرة
         hero.style.transform =
             `translate3d(0, ${distance}px, 0)`;
 
@@ -132,7 +100,6 @@ if (hero && datePage) {
 
 
     // نهاية السحب
-
     hero.addEventListener("touchend", () => {
 
         if (!dragging) return;
@@ -143,7 +110,6 @@ if (hero && datePage) {
 
 
         // سحبة قوية → الصفحة التالية
-
         if (distance <= -100) {
 
             hero.style.transition =
@@ -169,7 +135,6 @@ if (hero && datePage) {
 
 
         // سحبة ضعيفة → يرجع
-
         else {
 
             hero.style.transition =
@@ -251,3 +216,16 @@ if (guestBookForm) {
     });
 
 }
+
+const music = document.getElementById("bgMusic");
+const musicBtn = document.getElementById("musicBtn");
+
+musicBtn.addEventListener("click", () => {
+    if (music.paused) {
+        music.play();
+        musicBtn.textContent = "♫";
+    } else {
+        music.pause();
+        musicBtn.textContent = "♪";
+    }
+});
