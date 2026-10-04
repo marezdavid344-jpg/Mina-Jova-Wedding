@@ -27,25 +27,20 @@ function updateCountdown() {
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
-const hero = document.querySelector(".hero-page");
-const datePage = document.querySelector(".date-page");
-const scrollTrigger = document.getElementById("scrollTrigger");
-
-
-if (scrollTrigger) {
-    scrollTrigger.addEventListener("click", () => {
-        datePage.scrollIntoView({ behavior: "smooth" });
-    });
-}
-
 let startY = 0;
+let currentY = 0;
 let isDragging = false;
 
 if (hero && datePage) {
 
     hero.addEventListener("touchstart", function (e) {
+
         startY = e.touches[0].clientY;
+        currentY = startY;
         isDragging = true;
+
+        hero.style.transition = "none";
+
     }, { passive: true });
 
 
@@ -53,36 +48,55 @@ if (hero && datePage) {
 
         if (!isDragging) return;
 
-        const currentY = e.touches[0].clientY;
-        const difference = startY - currentY;
+        currentY = e.touches[0].clientY;
 
-        // امنع الـ browser من الـ scroll العادي
-        if (difference > 10) {
-            e.preventDefault();
+        let distance = currentY - startY;
+
+        // نمنع السحب لتحت
+        if (distance > 0) {
+            distance = 0;
         }
 
-    }, { passive: false });
+        // نخلي الحركة طبيعية ومش عنيفة
+        const move = distance * 0.8;
+
+        hero.style.transform = `translateY(${move}px)`;
+
+    }, { passive: true });
 
 
-    hero.addEventListener("touchend", function (e) {
+    hero.addEventListener("touchend", function () {
 
         if (!isDragging) return;
 
-        const endY = e.changedTouches[0].clientY;
-        const difference = startY - endY;
-
         isDragging = false;
 
-        // Swipe واضح لفوق
-        if (difference > 50) {
+        const distance = currentY - startY;
 
-            datePage.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
+        hero.style.transition = "transform 0.45s ease";
+
+        // لو سحب لفوق مسافة كويسة
+        if (distance < -80) {
+
+            hero.style.transform = "translateY(-100vh)";
+
+            setTimeout(() => {
+
+                datePage.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+                hero.style.transform = "";
+
+            }, 450);
+
+        } else {
+
+            // لو سحبة صغيرة يرجع مكانه
+            hero.style.transform = "translateY(0)";
 
         }
 
     }, { passive: true });
-
 }
