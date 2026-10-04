@@ -16,7 +16,7 @@ html,body{
     align-items: center;
     padding: 0;
     box-sizing: border-box;
-    toch-action:pan-y;
+    touch-action:none;
 }
 
 .hero-img {
