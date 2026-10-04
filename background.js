@@ -217,18 +217,18 @@ if (guestBookForm) {
 
 }
 
-const music = document.getElementById('bgMusic');
+const music = document.getElementById("bgMusic");
 
 function startMusic() {
+    music.volume = 1;
     music.play()
         .then(() => {
-            ['click', 'touchend', 'pointerup'].forEach(e => {
-                document.removeEventListener(e, startMusic);
-            });
+            console.log("Music started");
         })
-        .catch(() => {});
+        .catch((error) => {
+            console.log("Music blocked:", error);
+        });
 }
 
-['click', 'touchend', 'pointerup'].forEach(e => {
-    document.addEventListener(e, startMusic);
-});
+document.addEventListener("click", startMusic, { once: true });
+document.addEventListener("touchstart", startMusic, { once: true });
