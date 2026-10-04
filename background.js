@@ -31,76 +31,74 @@ let startY = 0;
 let currentY = 0;
 let dragging = false;
 
-if (hero && datePage) {
+hero.addEventListener("touchstart", (e) => {
+    startY = e.touches[0].clientY;
+    currentY = startY;
+    dragging = true;
 
-    hero.addEventListener("touchstart", function (e) {
-        startY = e.touches[0].clientY;
-        currentY = startY;
-        dragging = true;
-
-        hero.style.transition = "none";
-    }, { passive: true });
+    hero.style.transition = "none";
+}, { passive: true });
 
 
-    hero.addEventListener("touchmove", function (e) {
-        if (!dragging) return;
+hero.addEventListener("touchmove", (e) => {
+    if (!dragging) return;
 
-        currentY = e.touches[0].clientY;
+    e.preventDefault();
 
-        let move = currentY - startY;
+    currentY = e.touches[0].clientY;
 
-        // السحب لفوق بس
-        if (move < 0) {
+    let distance = currentY - startY;
 
-            // حركة خفيفة وطبيعية مع الصباع
-            hero.style.transform =
-                `translate3d(0, ${move}px, 0)`;
-        }
+    // نسمح بالسحب لفوق فقط
+    if (distance > 0) {
+        distance = 0;
+    }
 
-    }, { passive: true });
+    // خلي الصفحة تتحرك فعليًا مع صباعك
+    hero.style.transform = `translate3d(0, ${distance}px, 0)`;
+
+}, { passive: false });
 
 
-    hero.addEventListener("touchend", function () {
+hero.addEventListener("touchend", () => {
 
-        if (!dragging) return;
+    if (!dragging) return;
 
-        dragging = false;
+    dragging = false;
 
-        let distance = currentY - startY;
+    const distance = currentY - startY;
 
-        // لو السحبة قوية
-        if (distance < -100) {
+    // سحبة قوية
+    if (distance < -100) {
 
-            hero.style.transition =
-                "transform 0.45s cubic-bezier(0.22, 1, 0.36, 1)";
+        hero.style.transition =
+            "transform 0.45s cubic-bezier(.22,1,.36,1)";
 
-            hero.style.transform =
-                "translate3d(0, -100%, 0)";
+        hero.style.transform =
+            "translate3d(0, -100vh, 0)";
 
-            setTimeout(() => {
+        setTimeout(() => {
 
-                window.scrollTo({
-                    top: datePage.offsetTop,
-                    behavior: "instant"
-                });
+            window.scrollTo({
+                top: datePage.offsetTop,
+                behavior: "instant"
+            });
 
-                hero.style.transition = "none";
-                hero.style.transform = "";
+            hero.style.transition = "none";
+            hero.style.transform = "";
 
-            }, 450);
+        }, 450);
 
-        } 
-        
-        // لو السحبة ضعيفة يرجع
-        else {
+    } 
+    
+    // سحبة ضعيفة → يرجع
+    else {
 
-            hero.style.transition =
-                "transform 0.35s cubic-bezier(0.22, 1, 0.36, 1)";
+        hero.style.transition =
+            "transform 0.3s ease";
 
-            hero.style.transform =
-                "translate3d(0, 0, 0)";
-        }
+        hero.style.transform =
+            "translate3d(0, 0, 0)";
+    }
 
-    }, { passive: true });
-
-}
+});
