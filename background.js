@@ -218,14 +218,16 @@ if (guestBookForm) {
 }
 
 const music = document.getElementById("bgMusic");
-const musicBtn = document.getElementById("musicBtn");
+const heroImage = document.querySelector(".hero-img");
 
-musicBtn.addEventListener("click", () => {
+// محاولة تشغيل الموسيقى تلقائيًا
+music.play().catch(() => {
+    // Chrome منع الـautoplay، هنستنى ضغطة على أول صورة
+});
+
+// لو الـautoplay اترفض، أول ضغطة على الصورة تشغل الموسيقى
+heroImage.addEventListener("click", () => {
     if (music.paused) {
-        music.play();
-        musicBtn.textContent = "♫";
-    } else {
-        music.pause();
-        musicBtn.textContent = "♪";
+        music.play().catch(() => {});
     }
 });
