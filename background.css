@@ -524,3 +524,353 @@ section:has(.church) {
     height: auto;
     pointer-events: none; 
 }
+
+/* ==========================================
+   4. Guestbook Section (قسم دفتر الزوار)
+   ========================================== */
+.guestbook-section {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f4eee3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    box-sizing: border-box;
+}
+
+.guestbook-container {
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.envelope-icon {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.envelope-icon svg {
+    width: 28px;
+    height: 28px;
+    stroke: #6d543e;
+}
+
+.guestbook-container h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 52px;
+    font-weight: normal;
+    color: #4a3b32;
+    margin: 5px 0 15px 0;
+}
+
+.guestbook-container .subtitle {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 20px;
+    color: #6d543e;
+    line-height: 1.4;
+    margin: 0 0 15px 0;
+}
+
+.guestbook-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 30px 0;
+}
+
+.input-group {
+    position: relative;
+    width: 100%;
+}
+
+.input-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    stroke: #806b58;
+    pointer-events: none;
+}
+
+.pencil-icon {
+    top: 20px;
+    transform: none;
+}
+
+.input-group input,
+.input-group textarea {
+    width: 100%;
+    background-color: rgba(238, 230, 218, 0.5);
+    border: 1px solid #dcd3c5;
+    border-radius: 12px;
+    padding: 14px 16px 14px 46px;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 18px;
+    color: #4a3b32;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.input-group input::placeholder,
+.input-group textarea::placeholder {
+    color: #806b58;
+    opacity: 0.8;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+    border-color: #7a634d;
+    background-color: rgba(238, 230, 218, 0.8);
+}
+
+.input-group textarea {
+    resize: vertical;
+    min-height: 140px;
+}
+
+.send-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: #5c4433;
+    color: #ffffff;
+    border: none;
+    border-radius: 50px;
+    padding: 14px 28px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 5px;
+}
+
+.send-btn:hover {
+    background-color: #423023;
+}
+
+.send-btn svg {
+    width: 16px;
+    height: 16px;
+    stroke: #ffffff;
+}
+
+.guestbook-footer p {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 19px;
+    color: #6d543e;
+    line-height: 1.5;
+    margin: 20px 0 10px 0;
+}
+
+/* استيراد خطوط كلاسيكية مشابهة للتصميم */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
+
+:root {
+    --bg-color: #f2e9dc;
+    --text-color: #634b35;
+    --input-bg: rgba(255, 255, 255, 0.25);
+    --input-border: #d3c4b1;
+    --btn-bg: #614227;
+    --btn-text: #ffffff;
+    --placeholder-color: #a08f7d;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--text-color);
+}
+
+.guestBook-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    background-color: var(--bg-color);
+}
+
+.guestBook-container {
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* أيقونة الظرف العلوية */
+.envelope-icon svg {
+    width: 28px;
+    height: 28px;
+    stroke: var(--text-color);
+    margin-bottom: 10px;
+}
+
+/* العنوان الرئيسي بخط الرقعة/الإنسيابي */
+.guestBook-container h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3.2rem;
+    font-weight: normal;
+    color: var(--text-color);
+    margin: 0 0 15px 0;
+}
+
+/* النص الفرعي */
+.subtitle {
+    font-size: 1.15rem;
+    line-height: 1.5;
+    color: var(--text-color);
+    margin: 0 0 15px 0;
+    letter-spacing: 0.5px;
+}
+
+/* خط القلب الأوسط */
+.heart-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 260px;
+    margin: 0 auto 30px auto;
+}
+
+.heart-line span {
+    flex: 1;
+    height: 1px;
+    background-color: #d8c8b5;
+}
+
+.heart-line b {
+    font-size: 0.8rem;
+    color: var(--text-color);
+    padding: 0 10px;
+}
+
+/* الفورم والتصاميم الداخلية */
+.guestBook-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.input-group {
+    position: relative;
+    width: 100%;
+}
+
+.input-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    stroke: var(--placeholder-color);
+    pointer-events: none;
+}
+
+.input-icon.pencil-icon {
+    top: 22px;
+    transform: none;
+}
+
+.input-group input,
+.input-group textarea {
+    width: 100%;
+    padding: 14px 16px 14px 48px;
+    background-color: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 12px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--text-color);
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.input-group input::placeholder,
+.input-group textarea::placeholder {
+    color: var(--placeholder-color);
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+    border-color: var(--text-color);
+}
+
+.input-group textarea {
+    resize: vertical;
+}
+
+/* زر الإرسال */
+.send-btn {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    border: none;
+    border-radius: 25px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.send-btn:hover {
+    background-color: #4a321d;
+}
+
+.send-btn:active {
+    transform: scale(0.99);
+}
+
+.send-btn svg {
+    width: 18px;
+    height: 18px;
+    stroke: var(--btn-text);
+}
+
+/* الجزء السفلي */
+.guestBook-footer {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.guestBook-footer p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin: 0 0 15px 0;
+}
+
+.footer-heart {
+    font-size: 0.8rem;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+.bottom-branch img {
+    width: 80px;
+    height: auto;
+    opacity: 0.8;
+}
