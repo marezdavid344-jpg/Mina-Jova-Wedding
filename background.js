@@ -1,4 +1,4 @@
-// --- 1. كود العداد التنازلي (Countdown) ---
+// --- 1. Countdown ---
 
 const weddingDate = new Date("October 11, 2026 19:00:00").getTime();
 
@@ -36,7 +36,7 @@ updateCountdown();
 setInterval(updateCountdown, 1000);
 
 
-// --- 2. Swipe Up Hero + Music ---
+// --- 2. Hero Swipe + Music ---
 
 const hero = document.querySelector(".hero-page");
 const datePage = document.querySelector(".date-page");
@@ -49,35 +49,42 @@ const music = document.getElementById("bgMusic");
 
 function startMusic() {
 
-    if (music && music.paused) {
+    if (!music) return;
 
-        music.play().catch(error => {
-            console.log("Music blocked:", error);
-        });
+    if (music.paused) {
+
+        music.play()
+            .then(() => {
+                console.log("Music started successfully");
+            })
+            .catch(error => {
+                console.log("Music could not start:", error);
+            });
 
     }
 
 }
 
 
-// محاولة تشغيل الموسيقى تلقائيًا
-if (music) {
-    music.play().catch(() => {});
+// --- Start music on first real touch ---
+
+if (hero) {
+
+    hero.addEventListener("pointerdown", () => {
+
+        startMusic();
+
+    }, { once: true });
+
 }
 
 
-let startY = 0;
-let currentY = 0;
-let dragging = false;
-
-
-// الضغط على "A New Chapter Begins"
+// --- Scroll using "A New Chapter Begins" ---
 
 if (scrollTrigger && datePage) {
 
     scrollTrigger.addEventListener("click", () => {
 
-        // تشغيل الموسيقى مع أول تفاعل
         startMusic();
 
         window.scrollTo({
@@ -90,13 +97,19 @@ if (scrollTrigger && datePage) {
 }
 
 
-// بداية السحب
+// --- Swipe Up ---
+
+let startY = 0;
+let currentY = 0;
+let dragging = false;
+
 
 if (hero && datePage) {
 
+    // بداية السحب
+
     hero.addEventListener("touchstart", (e) => {
 
-        // أول لمسة على الـHero تشغل الموسيقى
         startMusic();
 
         startY = e.touches[0].clientY;
@@ -120,15 +133,13 @@ if (hero && datePage) {
 
         let distance = currentY - startY;
 
-
         // ممنوع السحب لتحت
 
         if (distance > 0) {
             distance = 0;
         }
 
-
-        // الـHero يتحرك مع الصباع مباشرة
+        // تحريك الـHero مع الصباع
 
         hero.style.transform =
             `translate3d(0, ${distance}px, 0)`;
@@ -179,88 +190,3 @@ if (hero && datePage) {
 
             hero.style.transition =
                 "transform 0.35s cubic-bezier(0.22, 1, 0.36, 1)";
-
-            hero.style.transform =
-                "translate3d(0, 0, 0)";
-
-        }
-
-    });
-
-}
-
-
-// --- 3. GuestBook → Google Sheets ---
-
-const scriptURL =
-    "https://script.google.com/macros/s/AKfycbzNQiItR7R37hj-WQNVpR8TnLogIz43bu1vPzQHTdC-EAqTnFYdInurJIxpIJa03Vi6/exec";
-
-const guestBookForm = document.getElementById("guestBookform");
-const guestName = document.getElementById("guestName");
-const guestMessage = document.getElementById("guestMessage");
-const guestBookStatus = document.getElementById("guestBookStatus");
-
-
-if (guestBookForm) {
-
-    guestBookForm.addEventListener("submit", function (e) {
-
-        e.preventDefault();
-
-        const name = guestName.value.trim();
-        const message = guestMessage.value.trim();
-
-
-        if (!name || !message) {
-            return;
-        }
-
-
-        guestBookStatus.textContent = "Sending...";
-
-
-        fetch(scriptURL, {
-
-            method: "POST",
-
-            body: JSON.stringify({
-                name: name,
-                message: message
-            })
-
-        })
-
-        .then(response => response.json())
-
-        .then(data => {
-
-            if (data.status === "success") {
-
-                guestBookStatus.textContent =
-                    "Thank you for being part of our story ♥";
-
-                guestBookForm.reset();
-
-            }
-
-            else {
-
-                guestBookStatus.textContent =
-                    "Something went wrong. Please try again.";
-
-            }
-
-        })
-
-        .catch(error => {
-
-            console.error(error);
-
-            guestBookStatus.textContent =
-                "Something went wrong. Please try again.";
-
-        });
-
-    });
-
-}
