@@ -11,19 +11,10 @@
     --placeholder-color: #a08f7d;
 }
 
-*, *::before, *::after {
-    box-sizing: border-box;
-}
-
-img {
-    max-width: 100%;
-}
-
 html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    overflow-x: hidden;
     color-scheme: light;
     -webkit-text-size-adjust: 100%;
     display: block;
@@ -698,108 +689,126 @@ section:has(.church) {
     position: relative;
     width: 100%;
     min-height: 100vh;
-    min-height: 100svh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     text-align: center;
 
-    /* ده اللي بيحدد بداية الكلام (تحت لوجو M&J) */
-    padding: 45svh 20px 10px;
+    /* اللي بيتحكم في نزول الكلام: الرقم الأول (فوق) */
+    padding: 32vh 20px 15px 20px;
 
-    color: #6b5644;
+    box-sizing: border-box;
+    color: #614d3b;
     font-family: 'Cormorant Garamond', serif;
     background-color: #e8ded1;
     overflow: hidden;
 }
 
-/* الخلفية */
+/* خلفية الصفحة كاملة */
 .last-page > img[alt="last-page"] {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    max-width: none;
     object-fit: cover;
     z-index: 0;
 }
 
-.last-page > *:not(img[alt="last-page"]) {
+/* العناصر فوق الخلفية */
+.last-page h1,
+.last-page p,
+.last-page .footer-heart,
+.last-page .lastletters,
+.last-page .bottom-branch {
     position: relative;
     z-index: 1;
 }
 
+/* عنوان Thank you */
 .last-page h1 {
     font-family: 'Great Vibes', cursive;
-    font-size: 3.2rem;
-    font-weight: 400;
-    line-height: 1.2;
-    margin: 0;
-    color: #6b5644;
+    font-size: 3.8rem;
+    font-weight: normal;
+    margin: 8px 0 0 0;
+    color: #5c4939;
 }
 
+/* النص الرئيسي */
 .last-page > p {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     line-height: 1.5;
-    letter-spacing: 1.5px;
-    margin: 6px 0 0;
+    letter-spacing: 1px;
+    margin: 12px 0 0 0;
     text-transform: lowercase;
 }
 
+/* القلب والخط */
 .last-page .footer-heart {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
     width: 100%;
-    margin: 18px 0 16px;
-    font-size: 0.9rem;
-    color: #614d3b;
+    margin: 15px 0 8px 0;
 }
 
+/* القلب */
+.last-page .footer-heart span {
+    font-size: 0.9rem;
+    color: #614d3b;
+    position: relative;
+}
+
+/* الخطوط على جانبي القلب */
 .last-page .footer-heart::before,
 .last-page .footer-heart::after {
     content: "";
     width: 35px;
     height: 1px;
-    background-color: rgba(97, 77, 59, 0.3);
+    background-color: rgba(97, 77, 59, 0.35);
+    margin: 10px 0;
 }
 
+/* النص السفلي */
 .last-page .lastletters p {
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     line-height: 1.6;
-    letter-spacing: 1.2px;
+    letter-spacing: 0.8px;
     margin: 0;
 }
 
-/* أيقونات انستجرام وواتساب */
-.last-page .social {
-    display: flex;
-    gap: 22px;
-    margin-top: 30px;
-}
-
-.last-page .social a {
-    color: #614d3b;
-    display: block;
-    line-height: 0;
-}
-
-.last-page .social svg {
-    width: 26px;
-    height: 26px;
-}
-
-/* الغصن */
-.last-page .bottom-branch {
-    margin-top: 16px;
-}
-
+/* غصن الزينة */
 .last-page .bottom-branch img {
-    width: 80px;
+    width: 100px;
     height: auto;
-    opacity: 0.8;
-    display: block;
+    margin-top: 5px;
+    margin-bottom: 0;
+    opacity: 0.85;
+}
+
+#musicBtn {
+    position: fixed;
+    right: 15px;
+    bottom: 20px;
+
+    width: 32px;
+    height: 32px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.75);
+    color: #8b6f47;
+
+    font-size: 18px;
+    cursor: pointer;
+
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
