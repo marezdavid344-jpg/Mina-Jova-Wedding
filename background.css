@@ -1,17 +1,33 @@
-/* --- إعدادات الصفحة الأساسية --- */
+/* ==========================================
+   المتغيرات والإعدادات الأساسية
+   ========================================== */
+:root {
+    --bg-color: #f2e9dc;
+    --text-color: #634b35;
+    --input-bg: rgba(255, 255, 255, 0.25);
+    --input-border: #d3c4b1;
+    --btn-bg: #614227;
+    --btn-text: #ffffff;
+    --placeholder-color: #a08f7d;
+}
+
 html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    background: #f4eee3;
     color-scheme: light;
     -webkit-text-size-adjust: 100%;
-    font-family: 'Playfair Display', Georgia, serif;
-    display: block; /* يضمن ترتيب الأقسام عمودياً */
+    display: block;
+}
+
+body {
+    background-color: var(--bg-color);
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--text-color);
 }
 
 /* ==========================================
-   1. Hero Page Section (الصفحة الأولى)
+   1. Hero Page Section
    ========================================== */
 .hero-page {
     width: 100%;
@@ -128,7 +144,7 @@ html, body {
 }
 
 /* ==========================================
-   2. Date Page Section (صفحة التاريخ والتنازلي)
+   2. Date Page Section
    ========================================== */
 .date-page {
     width: 100%;
@@ -170,11 +186,10 @@ html, body {
     display: inline-flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
     border-left: 1px solid #7a634d;
     border-right: 1px solid #7a634d;
     padding: 0 28px;
-    align-items: stretch;
     margin: 5px 0 20px;
 }
 
@@ -209,25 +224,27 @@ html, body {
     text-transform: uppercase;
 }
 
+/* خط القلب (مستخدم في صفحة التاريخ والـ guestBook) */
 .heart-line {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 65%;
+    width: 100%;
+    max-width: 260px;
     gap: 12px;
-    margin: 10px auto 25px;
+    margin: 0 auto 30px auto;
 }
 
 .heart-line span {
     flex: 1;
     height: 1px;
-    background: #b49a72;
+    background-color: #d8c8b5;
 }
 
 .heart-line b {
+    font-size: 0.8rem;
+    color: var(--text-color);
     padding: 0 10px;
-    font-size: 9px;
-    color: #6d543e;
 }
 
 .countdown-title {
@@ -289,14 +306,18 @@ html, body {
     margin: 4px 0;
 }
 
+/* القلب الصغير (عام) */
 .footer-heart {
     display: block;
     margin-top: 15px;
-    font-size: 10px;
-    color: #6d543e;
+    margin-bottom: 20px;
+    font-size: 0.8rem;
+    color: var(--text-color);
 }
 
-
+/* ==========================================
+   3. Church / Party Sections
+   ========================================== */
 section:has(.church) {
     display: flex;
     justify-content: center;
@@ -312,7 +333,7 @@ section:has(.church) {
     border: 1px solid #dcd3c5;
     outline: 8px solid #f5f0e8;
     box-shadow: 0 0 0 9px #dcd3c5;
-    
+
     max-width: 380px;
     width: 100%;
     padding: 40px 20px;
@@ -336,7 +357,6 @@ section:has(.church) {
     margin: 10px 0 20px;
     line-height: 0.5;
 }
-
 
 .church img {
     width: 100%;
@@ -380,7 +400,6 @@ section:has(.church) {
     stroke: #4a3b32;
 }
 
-
 .location {
     margin-bottom: 25px;
 }
@@ -390,10 +409,10 @@ section:has(.church) {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    background-color: #5c4433; 
-    color: #ffffff !important;  
+    background-color: #5c4433;
+    color: #ffffff !important;
     padding: 10px 24px;
-    border-radius: 50px;       
+    border-radius: 50px;
     text-decoration: none !important;
     font-family: "Montserrat", sans-serif;
     font-size: 13px;
@@ -404,23 +423,24 @@ section:has(.church) {
     background-color: #423023;
 }
 
-
 .locationicon {
     width: 15px;
     height: 15px;
     fill: #ffffff;
 }
 
+/* الغصن السفلي (عام) */
 .bottom-branch img {
-    width: 250px;
+    width: 80px;
     height: auto;
-    margin: 10px auto 25px;
-    display: block;
+    opacity: 0.8;
 }
 
-
+/* ==========================================
+   Gallery Section
+   ========================================== */
 .gallery {
-    background-color: #f3eae1; 
+    background-color: #f3eae1;
     max-width: 450px;
     margin: 0 auto;
     padding: 30px 20px 20px 20px;
@@ -429,7 +449,6 @@ section:has(.church) {
     position: relative;
 }
 
-
 .gallery .title {
     font-family: 'Great Vibes', 'Dancing Script', cursive;
     font-size: 2.4rem;
@@ -437,7 +456,6 @@ section:has(.church) {
     margin: 0 0 5px 0;
     font-weight: normal;
 }
-
 
 .gallery .cross {
     display: flex;
@@ -455,51 +473,41 @@ section:has(.church) {
     background-color: #c4b5a5;
     display: inline-block;
 }
-.gallery .cross .icon{
-   font-size: 1.1rem;
-   line-height: 1;
-}
 
+.gallery .cross .icon {
+    font-size: 1.1rem;
+    line-height: 1;
+}
 
 .gallery .img {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); 
+    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
     margin-bottom: 25px;
 }
-
-
-.gallery .img img {
-    width: 100%;
-    height: 180px; 
-    object-fit: cover; 
-    display: block;
-    border-radius: 2px;
-}
-
-
-.gallery .img img.full-width {
-    grid-column: span 2;
-    height: 160px; 
-}
-
 
 .gallery .img img {
     width: 100%;
     height: 180px;
     object-fit: cover;
-    object-position: top; 
+    object-position: top;
     display: block;
     border-radius: 2px;
 }
-.gallery .img img:first-child{
+
+.gallery .img img.full-width {
+    grid-column: span 2;
+    height: 160px;
+}
+
+.gallery .img img:first-child {
     object-position: bottom !important;
 }
 
 .gallery .footeer-content {
     position: relative;
     padding-top: 10px;
-    padding-bottom: 40px; 
+    padding-bottom: 40px;
 }
 
 .gallery .heart-icon {
@@ -515,182 +523,18 @@ section:has(.church) {
     margin: 0;
 }
 
-
 .gallery .side-branches {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
     height: auto;
-    pointer-events: none; 
-}
-
-/* ==========================================
-   4. Guestbook Section (قسم دفتر الزوار)
-   ========================================== */
-.guestbook-section {
-    width: 100%;
-    min-height: 100vh;
-    background-color: #f4eee3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 60px 20px;
-    box-sizing: border-box;
-}
-
-.guestbook-container {
-    width: 100%;
-    max-width: 420px;
-    text-align: center;
-    margin: 0 auto;
-}
-
-.envelope-icon {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
-}
-
-.envelope-icon svg {
-    width: 28px;
-    height: 28px;
-    stroke: #6d543e;
-}
-
-.guestbook-container h1 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 52px;
-    font-weight: normal;
-    color: #4a3b32;
-    margin: 5px 0 15px 0;
-}
-
-.guestbook-container .subtitle {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 20px;
-    color: #6d543e;
-    line-height: 1.4;
-    margin: 0 0 15px 0;
-}
-
-.guestbook-form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin: 30px 0;
-}
-
-.input-group {
-    position: relative;
-    width: 100%;
-}
-
-.input-icon {
-    position: absolute;
-    left: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 18px;
-    height: 18px;
-    stroke: #806b58;
     pointer-events: none;
 }
 
-.pencil-icon {
-    top: 20px;
-    transform: none;
-}
-
-.input-group input,
-.input-group textarea {
-    width: 100%;
-    background-color: rgba(238, 230, 218, 0.5);
-    border: 1px solid #dcd3c5;
-    border-radius: 12px;
-    padding: 14px 16px 14px 46px;
-    font-family: "Cormorant Garamond", serif;
-    font-size: 18px;
-    color: #4a3b32;
-    box-sizing: border-box;
-    outline: none;
-    transition: border-color 0.3s ease, background-color 0.3s ease;
-}
-
-.input-group input::placeholder,
-.input-group textarea::placeholder {
-    color: #806b58;
-    opacity: 0.8;
-}
-
-.input-group input:focus,
-.input-group textarea:focus {
-    border-color: #7a634d;
-    background-color: rgba(238, 230, 218, 0.8);
-}
-
-.input-group textarea {
-    resize: vertical;
-    min-height: 140px;
-}
-
-.send-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    background-color: #5c4433;
-    color: #ffffff;
-    border: none;
-    border-radius: 50px;
-    padding: 14px 28px;
-    font-family: "Montserrat", sans-serif;
-    font-size: 14px;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 5px;
-}
-
-.send-btn:hover {
-    background-color: #423023;
-}
-
-.send-btn svg {
-    width: 16px;
-    height: 16px;
-    stroke: #ffffff;
-}
-
-.guestbook-footer p {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 19px;
-    color: #6d543e;
-    line-height: 1.5;
-    margin: 20px 0 10px 0;
-}
-
-/* استيراد خطوط كلاسيكية مشابهة للتصميم */
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
-
-:root {
-    --bg-color: #f2e9dc;
-    --text-color: #634b35;
-    --input-bg: rgba(255, 255, 255, 0.25);
-    --input-border: #d3c4b1;
-    --btn-bg: #614227;
-    --btn-text: #ffffff;
-    --placeholder-color: #a08f7d;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    background-color: var(--bg-color);
-    font-family: 'Cormorant Garamond', serif;
-    color: var(--text-color);
-}
-
+/* ==========================================
+   4. GuestBook Section
+   ========================================== */
 .guestBook-page {
     display: flex;
     justify-content: center;
@@ -710,7 +554,6 @@ body {
     align-items: center;
 }
 
-/* أيقونة الظرف العلوية */
 .envelope-icon svg {
     width: 28px;
     height: 28px;
@@ -718,7 +561,6 @@ body {
     margin-bottom: 10px;
 }
 
-/* العنوان الرئيسي بخط الرقعة/الإنسيابي */
 .guestBook-container h1 {
     font-family: 'Great Vibes', cursive;
     font-size: 3.2rem;
@@ -727,7 +569,6 @@ body {
     margin: 0 0 15px 0;
 }
 
-/* النص الفرعي */
 .subtitle {
     font-size: 1.15rem;
     line-height: 1.5;
@@ -736,29 +577,6 @@ body {
     letter-spacing: 0.5px;
 }
 
-/* خط القلب الأوسط */
-.heart-line {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    max-width: 260px;
-    margin: 0 auto 30px auto;
-}
-
-.heart-line span {
-    flex: 1;
-    height: 1px;
-    background-color: #d8c8b5;
-}
-
-.heart-line b {
-    font-size: 0.8rem;
-    color: var(--text-color);
-    padding: 0 10px;
-}
-
-/* الفورم والتصاميم الداخلية */
 .guestBook-form {
     width: 100%;
     display: flex;
@@ -799,7 +617,7 @@ body {
     color: var(--text-color);
     box-sizing: border-box;
     outline: none;
-    transition: border-color 0.3s ease;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
 .input-group input::placeholder,
@@ -810,13 +628,14 @@ body {
 .input-group input:focus,
 .input-group textarea:focus {
     border-color: var(--text-color);
+    background-color: rgba(238, 230, 218, 0.8);
 }
 
 .input-group textarea {
     resize: vertical;
+    min-height: 140px;
 }
 
-/* زر الإرسال */
 .send-btn {
     width: 100%;
     padding: 14px;
@@ -826,6 +645,7 @@ body {
     border-radius: 25px;
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.15rem;
+    letter-spacing: 1px;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -849,7 +669,6 @@ body {
     stroke: var(--btn-text);
 }
 
-
 .guestBook-footer {
     margin-top: 40px;
     display: flex;
@@ -863,23 +682,59 @@ body {
     margin: 0 0 15px 0;
 }
 
-.footer-heart {
-    font-size: 0.8rem;
-    color: var(--text-color);
-    margin-bottom: 20px;
-}
-
-.bottom-branch img {
-    width: 80px;
-    height: auto;
-    opacity: 0.8;
-}
-
-
-/* استدعاء خطوط قريبة جداً من التصميم */
 /* ==========================================
-   5. Last Page Section (الصفحة الأخيرة)
+   5. Last Page Section
    ========================================== */
+.last-page {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+
+    /* اللي بيتحكم في نزول الكلام: الرقم الأول (فوق) */
+    padding: 32vh 20px 15px 20px;
+
+    box-sizing: border-box;
+    color: #614d3b;
+    font-family: 'Cormorant Garamond', serif;
+    background-color: #e8ded1;
+    overflow: hidden;
+}
+
+/* خلفية الصفحة كاملة */
+.last-page > img[alt="last-page"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+/* العناصر فوق الخلفية */
+.last-page h1,
+.last-page p,
+.last-page .footer-heart,
+.last-page .lastletters,
+.last-page .bottom-branch {
+    position: relative;
+    z-index: 1;
+}
+
+/* عنوان Thank you */
+.last-page h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3.8rem;
+    font-weight: normal;
+    margin: 8px 0 0 0;
+    color: #5c4939;
+}
+
 /* النص الرئيسي */
 .last-page > p {
     font-size: 1.25rem;
@@ -912,7 +767,7 @@ body {
     width: 35px;
     height: 1px;
     background-color: rgba(97, 77, 59, 0.35);
-    margin: 10px 0px;
+    margin: 10px 0;
 }
 
 /* النص السفلي */
